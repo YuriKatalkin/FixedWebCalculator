@@ -3,14 +3,22 @@ package org.example.fixedwebcalculator;
 import java.util.Map;
 
 public class Calculator {
-    private final Map<String, Operation> operations = Map.of(
-            "+", new SumOperation(),
-            "-", new DiffOperation(),
-            "*", new MultiplyOperation(),
-            "/", new DivideOperation()
+    private final Map<OperationType, Operation> operations = Map.of(
+            OperationType.SUM, new SumOperation(),
+            OperationType.DIFF, new DiffOperation(),
+            OperationType.MULTIPLY, new MultiplyOperation(),
+            OperationType.DIVIDE, new DivideOperation()
     );
 
-    public double calculate(String op, double num1, double num2) {
-        return operations.get(op).calculate(num1, num2);
+    public double calculate(OperationType op, double num1, double num2) {
+        Operation operation = operations.get(op);
+        if (operation == null) {
+            throw new IllegalArgumentException("Неизвестная операция: " + op);
+        }
+        return operation.calculate(num1, num2);
+    }
+
+    public double getResult(OperationType op, double num1, double num2) {
+        return calculate(op, num1, num2);
     }
 }

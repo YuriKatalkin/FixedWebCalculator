@@ -27,14 +27,15 @@ public class CalculatorServlet extends HttpServlet {
         String operation = req.getParameter("operation");
 
         Calculator calculator = new Calculator();
-        double result = calculator.calculate(operation, num1, num2);
+        OperationType operationType = OperationType.valueOf(operation.toUpperCase());
+        double result = calculator.calculate(operationType, num1, num2);
 
         List<String> history = (List<String>) getServletContext().getAttribute("history");
         if (history == null) {
             history = new ArrayList<>();
             getServletContext().setAttribute("history", history);
         }
-        history.add(num1 + " " + operation + " " + num2 + " = " + result);
+        history.add(num1 + " " + operationType + " " + num2 + " = " + calculator.getResult(operationType, num1, num2));
 
         req.setAttribute("result", result);
         req.setAttribute("num1", num1);
