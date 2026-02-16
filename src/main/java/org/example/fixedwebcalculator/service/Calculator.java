@@ -1,4 +1,6 @@
-package org.example.fixedwebcalculator;
+package org.example.fixedwebcalculator.service;
+
+import org.example.fixedwebcalculator.model.OperationType;
 
 import java.util.Map;
 

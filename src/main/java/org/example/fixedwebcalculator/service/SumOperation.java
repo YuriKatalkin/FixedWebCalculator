@@ -1,4 +1,4 @@
-package org.example.fixedwebcalculator;
+package org.example.fixedwebcalculator.service;
 
 public class SumOperation implements Operation {
     @Override

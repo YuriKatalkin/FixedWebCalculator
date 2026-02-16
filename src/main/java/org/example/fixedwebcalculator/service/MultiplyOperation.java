@@ -1,4 +1,4 @@
-package org.example.fixedwebcalculator;
+package org.example.fixedwebcalculator.service;
 
 public class MultiplyOperation implements Operation {
     @Override
