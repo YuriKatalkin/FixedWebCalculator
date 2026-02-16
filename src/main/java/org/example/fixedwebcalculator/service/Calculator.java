@@ -19,12 +19,4 @@ public class Calculator {
         }
         return operation.calculate(num1, num2);
     }
-
-    public double getResult(OperationType op, double num1, double num2) {
-        Operation operation = operations.get(op);
-        if (operation == null) {
-            throw new IllegalArgumentException("Неизвестная операция: " + op);
-        }
-        return calculate(op, num1, num2);
-    }
 }
